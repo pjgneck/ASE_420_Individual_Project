@@ -1,27 +1,80 @@
 # SSH Command Manager
 
-## Overview
-This project is focused on building a centralized platform for users to securely store and manage SSH commands and device information.  
+## Problem
 
-System administrators often rely on a variety of commands across multiple devices, which can be difficult to track and share efficiently. Without an organized solution, users may waste time searching for the correct commands or risk errors when executing them.
+   System administrators often rely on a variety of commands across multiple devices, which can become difficult to track and share efficiently, Without an organized solution, users may waste time searching for the correct commands or risk errors when executing them.
 
-The **SSH Command Manager** aims to solve this problem by providing a simple, user-friendly way to store, organize, and retrieve commonly used SSH commands.
+---
 
-## Features (Planned)
-- 🔐 **Secure Storage**: Keep SSH commands and device details safe in a central location.  
-- 📂 **Organization Tools**: Categorize commands by device, purpose, or team.  
-- ⚡ **Quick Retrieval**: Search and filter to find the right command fast.  
-- 🛠️ **Predefined Commands**: Admins can set up common commands for team members.  
-- 👥 **Collaboration Support**: Reduce onboarding time and ensure consistency across teams.  
-- ✅ **Error Reduction**: Minimize mistakes caused by outdated or missing documentation.  
+## Solution
 
-## Benefits
-- Streamlines workflows by centralizing command storage.  
-- Enhances collaboration between system administrators and team members.  
-- Improves productivity when managing SSH-connected systems.  
-- Reduces onboarding time for new team members.  
+   A Python Tkinter application to manage SSH commands, devices, and departments with user authentication.  
+   Designed for IT teams, help desks, and network administrators.
 
-## Getting Started
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/your-username/ssh-command-manager.git
+---
+
+## Features
+
+   ### User Authentication
+   - Secure login system with hashed passwords
+   - Department-based access
+
+   ### Commands Tab
+   - View SSH commands
+   - Search and filter by command, description, ID, last used
+   - Copy commands to clipboard
+
+   ### Devices Tab
+   - Track servers, routers, switches, and other devices
+   - Search and filter options
+
+   ### Manage Tab (Managers only)
+   - Add departments, users, managers, and team leads
+
+---
+
+
+## Requirements
+
+- Python 3.x
+- `tkinter` (usually included with Python)
+- Optional JSON files pre-created in `data/` folder:
+  - `users_auth.json`
+  - `departments.json`
+- Install Tkinter if needed:
+```bash
+pip install tk
+```
+---
+
+## Default Access
+
+To quickly start the application, a placeholder user can be used:
+   - Username: admin
+   - Password: password123 (hash this before storing!)
+   - Department: Help Desk
+Allows immediate access without creating a new user.
+
+---
+
+## Usage
+   - Run run_py.bat
+   - Log in with valid credentials
+   - Navigate Commands, Devices, and Manage tabs
+   - Use search/filter to find commands or devices quickly
+   - Managers can add departments, users, and assign roles
+
+---
+
+## Security Notes
+   - Passwords must be hashed in users_auth.json
+   - Users only access their department data
+   - Copying a command updates the last_used field automatically
+
+---
+
+## Contributing
+   - Fork the repository
+   - Create a new branch for your feature or bugfix
+   - Make changes
+   - Submit a pull request
