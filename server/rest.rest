@@ -1,0 +1,49 @@
+### 🔐 LOGIN (get token)
+POST http://localhost:3030/login
+Content-Type: application/json
+
+{
+  "username": "example",
+  "password": "test"
+}
+
+###
+
+### 👤 GET USERS
+GET http://localhost:3030/users
+
+###
+
+### 💻 GET COMMANDS
+GET http://localhost:3030/commands?token=testtoken
+
+###
+
+### 📱 GET DEVICES
+GET http://localhost:3030/devices?token=testtoken
+
+###
+
+### ➕ ADD DEVICE
+POST http://localhost:3030/devices/add
+Content-Type: application/json
+
+{
+  "token": "testtoken",
+  "device": "Router",
+  "ip": "192.168.1.1"
+}
+
+###
+
+### 🗂 IMPORT COMMANDS
+POST http://localhost:3030/commands/import
+Content-Type: application/json
+
+{
+  "token": "testtoken",
+  "commands": [
+    { "command": "ssh user@192.168.1.20", "description": "Access Server-02" },
+    { "command": "docker ps", "description": "List running containers" }
+  ]
+}
