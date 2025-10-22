@@ -11,7 +11,7 @@ by Parker Groneck
 ---
 ## Problem
 
-1. Managing SSH commands and device information manually is time-consuming  
+1. Managing terminal commands and device information manually is time-consuming  
 2. No easy way to store, search, or copy commands and device IPs  
 3. Lack of visual organization or security for command/device data  
 4. No simple way to **share commands or device info** with team members  
@@ -48,22 +48,41 @@ by Parker Groneck
   5. API or Webbased backend 
    
 ---
+
+## Sprint 1 Slips and Spills
+
+- Pushing Time
+- Didn't Leverage AI
+  
+---
+
+## Sprint 1 Wins
+
+- Started early and finished all required code
+- Ended up cutting some corrners that payed off in the end.
+  
+---
+
 ## Numbers
 
-**Total Implented Features:**5
-**Total Implented Requirements:**5
+**Total Implented Features:** 5
+**Total Implented Requirements:** 5
 
-**Weekly Burndown Rate:** 40%
+**LOC Per Week:** 147
+**Total LOC:** 739 lines
+
+**Weekly Burndown Rate:** 20%  
 **Burndown Rate:** 100%
 
 ---
 
-## Sprint 2 Goals (Individual)
+## Sprint 2 Goals
 
-- Major UI Upgrade
-- Expand hashing system for all items
-- Enhance data schema for better tracking
-- Add permission and department locks
+**Week 1:** Major UI Upgrade
+**Week 2:** Expand hashing system for all items
+**Week 3:** Enhance data schema for better tracking
+**Week 4:** Add permission and department locks
+**Week 5:** Clean up and Refactor
 
 ---
 
