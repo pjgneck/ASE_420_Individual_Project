@@ -18,16 +18,16 @@ A streamlined solution for managing SSH commands, devices, and departmental acce
 
 ## ✨ Features
 
-   ### User Authentication
+   ## User Authentication
    - Secure login with hashed passwords
    - Department‑based access control
 
-   ### Commands Tab
+   ## Commands Tab
    - View and organize terminal commands
    - Search and filter by command, description, ID, or last‑used date
    - Copy commands directly to clipboard
 
-   ### Devices Tab
+   ## Devices Tab
    - Track servers, routers, switches, and other hardware
    - Search and filter device information easily
 
