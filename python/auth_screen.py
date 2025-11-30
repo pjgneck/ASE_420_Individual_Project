@@ -1,39 +1,46 @@
-
 import requests
 import ttkbootstrap as ttk
 from ttkbootstrap.constants import *
 from tkinter import messagebox
-# Assuming CommandManagerApp is in command_manager_app.py based on previous steps
+# Ensure this import path is correct for your setup
 from command_manager import CommandManagerApp 
 
 API_BASE_URL = "http://localhost:3030"
 
 # ---------------- AUTH SCREEN ---------------- #
 class AuthScreen:
-    """Handles the user login/signup screen and authentication with the server."""
+    """Handles the user login/signup screen with an improved UI."""
     
     def __init__(self):
-        # Initialize the main Tkinter window
         self.root = ttk.Window(themename="flatly")
-        self.root.title("Login / Sign Up")
-        self.root.geometry("400x250") # Increased size to fit the new button
+        self.root.title("Terminal Command Manager")
+        self.root.geometry("450x350")
+        self.root.resizable(False, False) # Fixed size for card layout
 
         self.username_var = ttk.StringVar()
         self.password_var = ttk.StringVar()
-
-        # Create UI elements
-        ttk.Label(self.root, text="Username:").pack(anchor="w", padx=20, pady=5)
-        ttk.Entry(self.root, textvariable=self.username_var).pack(fill="x", padx=20)
-
-        ttk.Label(self.root, text="Password:").pack(anchor="w", padx=20, pady=5)
-        ttk.Entry(self.root, textvariable=self.password_var, show="*").pack(fill="x", padx=20)
         
-        # Frame for holding both login and signup buttons
-        btn_frame = ttk.Frame(self.root)
-        btn_frame.pack(pady=20)
+        # --- Centered Card Layout ---
+        main_frame = ttk.Frame(self.root, padding=20, borderwidth=1, relief="solid")
+        main_frame.place(relx=0.5, rely=0.5, anchor=CENTER)
 
-        ttk.Button(btn_frame, text="Login", bootstyle="success", command=self.authenticate).pack(side="left", padx=10)
-        ttk.Button(btn_frame, text="Sign Up", bootstyle="info-outline", command=self.sign_up).pack(side="left", padx=10)
+        # Title
+        ttk.Label(main_frame, text="Secure Access", font=("Helvetica", 18, "bold"), bootstyle="primary").pack(pady=(0, 20))
+        
+        # Username Input
+        ttk.Label(main_frame, text="Username:").pack(fill="x", pady=(5, 0))
+        ttk.Entry(main_frame, textvariable=self.username_var, font=("Helvetica", 12)).pack(fill="x", ipady=5, pady=(0, 10))
+
+        # Password Input
+        ttk.Label(main_frame, text="Password:").pack(fill="x", pady=(5, 0))
+        ttk.Entry(main_frame, textvariable=self.password_var, show="*", font=("Helvetica", 12)).pack(fill="x", ipady=5, pady=(0, 20))
+
+        # Button Frame
+        btn_frame = ttk.Frame(main_frame)
+        btn_frame.pack(fill="x")
+
+        ttk.Button(btn_frame, text="Login", bootstyle="success", command=self.authenticate).pack(side="left", fill="x", expand=True, padx=(0, 5))
+        ttk.Button(btn_frame, text="Sign Up", bootstyle="info-outline", command=self.sign_up).pack(side="right", fill="x", expand=True, padx=(5, 0))
         
         self.root.mainloop()
 
