@@ -3,7 +3,7 @@
 const { MongoClient } = require('mongodb');
 
 // NOTE: Hardcoding credentials is a security risk. Use environment variables (process.env) instead!
-const uri = 'mongodb+srv://handler:Gcw546e1GAec6Vxq@webapp.jfjk1cj.mongodb.net/commandBase?retryWrites=true&w=majority';
+const uri = '<MOngoDBLink>';
 const dbName = 'commandBase';
 
 let db;
