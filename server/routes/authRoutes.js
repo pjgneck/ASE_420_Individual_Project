@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const { v4: uuidv4 } = require('uuid'); // Used to generate a unique token
+const { v4: uuidv4 } = require('uuid');
+import bcrypt from 'bcrypt';
 
 /**
  * Utility function to generate a simple unique token.
@@ -8,7 +9,7 @@ const { v4: uuidv4 } = require('uuid'); // Used to generate a unique token
  */
 const generateToken = () => {
     // Generate a simple UUID token for this example
-    return uuidv4(); 
+    return uuidv4();
 };
 
 /**
@@ -43,8 +44,8 @@ router.post('/login', async (req, res) => {
 
     try {
         // Find the user by username and password
-        const user = await db.collection('users').findOne({ 
-            username, 
+        const user = await db.collection('users').findOne({
+            username,
             password // WARNING: Storing plain passwords is bad practice. Use bcrypt in production!
         });
 
@@ -79,8 +80,7 @@ router.post('/signup', async (req, res) => {
     if (!username || !password) {
         return res.status(400).json({ success: false, message: 'Username and password required' });
     }
-    
-    // Basic username validation (e.g., length)
+
     if (username.length < 3) {
         return res.status(400).json({ success: false, message: 'Username must be at least 3 characters long' });
     }
@@ -93,26 +93,30 @@ router.post('/signup', async (req, res) => {
             return res.status(409).json({ success: false, message: 'Username already taken' });
         }
 
-        // 2. Create new user object
+        // 2. Hash the password
+        const saltRounds = 10;
+        const hashedPassword = await bcrypt.hash(password, saltRounds);
+
+        // 3. Create new user object
         const newUser = {
             username: username,
-            password: password, // WARNING: Use hashed passwords (e.g., bcrypt) in production!
-            token: generateToken(), // Generate a unique token for the new user
+            password: hashedPassword, // password now hashed securely
+            token: generateToken(),
             commands: [],
             devices: [],
             createdAt: new Date()
         };
 
-        // 3. Insert the new user into the database
+        // 4. Insert into database
         const result = await db.collection('users').insertOne(newUser);
-        
-        // 4. Return success response
+
+        // 5. Respond
         res.status(201).json({
             success: true,
             message: 'User registered successfully',
             username: newUser.username,
             token: newUser.token,
-            userId: result.insertedId // MongoDB ID of the new user
+            userId: result.insertedId
         });
 
     } catch (err) {
